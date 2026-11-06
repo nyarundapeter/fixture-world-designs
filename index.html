@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fixture World Designs Portfolios</title>
+<meta name="description" content="Interior design portfolios of Fixture World Designs: a client portfolio and a technical folio for design studios.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: a two-door entrance. One card per audience, side by side, stacked on phones. */
+:root{
+  --bg:#F1F0EC; --card:#FAF9F6; --ink:#1A2023; --muted:#5B6467; --line:#D8D7D0; --teal:#1C6F73; --red:#B8322A;
+  --display:"Marcellus", Georgia, serif; --body:"Figtree", "Segoe UI", system-ui, sans-serif; --mono:"IBM Plex Mono", ui-monospace, Consolas, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --bg:#121617; --card:#191E20; --ink:#ECEAE4; --muted:#A3ABAD; --line:#2C3436; --teal:#63B9BA; --red:#F07465; color-scheme:dark; }
+}
+:root[data-theme="dark"]{ --bg:#121617; --card:#191E20; --ink:#ECEAE4; --muted:#A3ABAD; --line:#2C3436; --teal:#63B9BA; --red:#F07465; color-scheme:dark; }
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--body);min-height:100vh;display:grid;place-items:center;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:40px}
+main{max-width:980px;width:100%}
+h1{font:400 clamp(34px,5vw,56px)/1.05 var(--display);margin:0 0 10px;text-wrap:balance}
+.lede{color:var(--muted);max-width:56ch;margin:0 0 36px}
+.doors{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:680px){.doors{grid-template-columns:1fr}}
+a.door{display:grid;grid-template-rows:auto auto 1fr auto;gap:10px;background:var(--card);border:1px solid var(--line);padding:22px;text-decoration:none;color:inherit;transition:border-color .2s}
+a.door:hover,a.door:focus-visible{border-color:var(--ink);outline:none}
+.door img{width:100%;aspect-ratio:16/9;object-fit:cover;background:#fff}
+.tag{font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.biz .tag{color:var(--teal)} .tech .tag{color:var(--red)}
+.door h2{margin:0;font:400 28px/1.15 var(--display)}
+.door p{margin:0;color:var(--muted);font-size:15px}
+.go{font-weight:600;font-size:14px}
+footer{margin-top:28px;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<main>
+  <h1>Fixture World Designs, Interior Design</h1>
+  <p class="lede">Westlands, Nairobi. Homes, restaurants, leisure venues, galleries and workplaces. Choose the portfolio that fits why you’re here.</p>
+  <div class="doors">
+    <a class="door biz" href="business.html">
+      <img src="assets/bung-living-dining.jpg" alt="Living and dining room render from the Kinungi Bungalow">
+      <span class="tag">For clients</span>
+      <h2>Fixture World Designs</h2>
+      <p>Six projects, the problems they solved, services and how a project runs from first visit to finished room.</p>
+      <span class="go">Open client portfolio →</span>
+    </a>
+    <a class="door tech" href="technical.html">
+      <img src="assets/wp-tower-b-plan.jpg" alt="Office floor plan drawing on a structural grid" style="object-fit:contain">
+      <span class="tag">For design studios</span>
+      <h2>Technical folio</h2>
+      <p>Plans, sections, elevations, finishes schedules, site analysis and programming, organised as a sheet set.</p>
+      <span class="go">Open technical folio →</span>
+    </a>
+  </div>
+  <footer>Westlands, Nairobi · Contact details shared on request</footer>
+</main>
+</body>
+</html>

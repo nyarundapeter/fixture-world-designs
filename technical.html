@@ -1,0 +1,798 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fixture World Designs Technical Folio</title>
+<meta name="description" content="Technical portfolio of Fixture World Designs, Nairobi: plans, sections, elevations, schedules, site analysis and renders, for studios looking for a collaborator.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: a bound drawing set. Sticky sheet index on the left, each project a numbered sheet with a title strip, drawings on white "paper", schedules as real tables. Red is used only the way a redline is: for what is new or needs attention. */
+:root{
+  --desk:#E9EAE5; --sheet:#FBFBF8; --ink:#1B1E1F; --graphite:#5A6062; --rule:#C7CAC3; --grid:rgba(27,30,31,.045);
+  --red:#B8322A; --red-soft:#F3DEDA; --hi:#1B1E1F; --mid:#8A9092; --lo:#D9DBD6;
+  --display:"Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --body:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Consolas, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --desk:#121516; --sheet:#1A1E20; --ink:#E5E7E2; --graphite:#9BA2A3; --rule:#343A3C; --grid:rgba(229,231,226,.04);
+    --red:#F07465; --red-soft:#3A2321; --hi:#E5E7E2; --mid:#7D8587; --lo:#2B3133; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --desk:#121516; --sheet:#1A1E20; --ink:#E5E7E2; --graphite:#9BA2A3; --rule:#343A3C; --grid:rgba(229,231,226,.04);
+  --red:#F07465; --red-soft:#3A2321; --hi:#E5E7E2; --mid:#7D8587; --lo:#2B3133; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;color:var(--ink);font:400 15.5px/1.6 var(--body);
+  background-color:var(--desk);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px}
+img{max-width:100%;display:block}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3,h4{margin:0;font-family:var(--display);text-wrap:balance}
+:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.mono{font-family:var(--mono)}
+.lbl{font:500 11px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--graphite)}
+
+.shell{display:grid;grid-template-columns:230px minmax(0,1fr);gap:28px;max-width:1320px;margin:0 auto;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:24px 60px}
+@media (max-width:960px){.shell{grid-template-columns:1fr}}
+
+/* Index */
+.index{position:sticky;top:calc(24px + env(safe-area-inset-top,0px));align-self:start;border:1px solid var(--ink);background:var(--sheet)}
+.index h2{font:800 13px/1 var(--display);font-stretch:118%;letter-spacing:.06em;text-transform:uppercase;padding:12px 14px;border-bottom:1px solid var(--ink)}
+.index ol{list-style:none;margin:0;padding:0}
+.index a{display:grid;grid-template-columns:52px 1fr;gap:6px;padding:9px 14px;text-decoration:none;border-bottom:1px solid var(--rule);font-size:13.5px}
+.index a:last-child{border-bottom:0}
+.index a span:first-child{font-family:var(--mono);color:var(--red);font-size:12px;padding-top:1px}
+.index a:hover,.index a.on{background:var(--red-soft)}
+.index .meta{padding:12px 14px;border-top:1px solid var(--ink);display:grid;gap:4px}
+@media (max-width:960px){
+  .index{position:static}
+  .index ol{display:flex;overflow-x:auto}
+  .index a{grid-template-columns:auto;border-bottom:0;border-right:1px solid var(--rule);white-space:nowrap}
+  .index .meta{display:none}
+}
+
+/* Sheets */
+main{display:grid;gap:28px;min-width:0}
+.sheet{background:var(--sheet);border:1px solid var(--ink);min-width:0;scroll-margin-top:16px}
+.strip{display:grid;grid-template-columns:auto minmax(0,1fr) auto;border-bottom:1px solid var(--ink)}
+.strip .code{font:800 30px/1 var(--display);font-stretch:112%;padding:16px 18px;border-right:1px solid var(--ink);color:var(--red);display:flex;align-items:center}
+.strip .t{padding:12px 18px;min-width:0}
+.strip h2{font:800 clamp(20px,2.6vw,28px)/1.1 var(--display);font-stretch:116%;text-transform:uppercase;letter-spacing:.01em}
+.strip .sub{margin-top:4px;color:var(--graphite);font-size:13.5px}
+.strip .r{border-left:1px solid var(--ink);padding:12px 18px;display:grid;gap:3px;align-content:center;min-width:150px}
+.strip .r b{font:500 12.5px/1.3 var(--mono)}
+@media (max-width:640px){.strip{grid-template-columns:auto minmax(0,1fr)}.strip .r{grid-column:1/-1;border-left:0;border-top:1px solid var(--ink);grid-template-columns:repeat(2,minmax(0,1fr))}}
+.body{padding:22px 18px;display:grid;gap:26px}
+.cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}
+.cols3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+@media (max-width:760px){.cols,.cols3{grid-template-columns:1fr}}
+.h{font:700 13px/1.2 var(--display);font-stretch:118%;letter-spacing:.07em;text-transform:uppercase;display:flex;gap:10px;align-items:baseline;border-bottom:1px solid var(--rule);padding-bottom:6px;margin-bottom:10px}
+.h .lbl{margin-left:auto}
+ul.spec{margin:0;padding:0;list-style:none;display:grid;gap:6px;font-size:14.5px}
+ul.spec li{display:grid;grid-template-columns:16px 1fr;gap:6px}
+ul.spec li::before{content:"—";color:var(--red);font-family:var(--mono)}
+.prose{max-width:68ch;color:var(--ink)}
+.prose+.prose{margin-top:8px}
+
+/* Drawings */
+figure{margin:0;min-width:0}
+.dwg{background:#fff;border:1px solid var(--rule);position:relative}
+.dwg img{width:100%;height:auto;cursor:zoom-in}
+.dwg.fixed img{aspect-ratio:4/3;object-fit:contain}
+.dwg figcaption,.ren figcaption{display:flex;gap:10px;align-items:baseline;justify-content:space-between;padding:7px 10px;border-top:1px solid var(--rule);font:500 11.5px/1.3 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:#3b4042;background:#fff}
+.dwg figcaption b,.ren figcaption b{color:#B8322A;font-weight:500}
+.ren{border:1px solid var(--rule);background:var(--sheet)}
+.ren img{width:100%;aspect-ratio:16/9;object-fit:cover;cursor:zoom-in}
+.ren figcaption{background:var(--sheet);color:var(--graphite);border-top-color:var(--rule)}
+.ren figcaption b{color:var(--red)}
+.strip-imgs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media (max-width:760px){.strip-imgs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Toggle existing/proposed */
+.tog{display:grid;gap:0}
+.tog .bar{display:flex;border:1px solid var(--rule);border-bottom:0;background:var(--sheet)}
+.tog button{flex:1;appearance:none;border:0;background:transparent;color:var(--graphite);padding:9px 10px;font:600 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-right:1px solid var(--rule)}
+.tog button:last-child{border-right:0}
+.tog button[aria-pressed="true"]{background:var(--ink);color:var(--sheet)}
+.tog .dwg img{aspect-ratio:4/3;object-fit:contain}
+
+/* Tables */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--rule)}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+thead th{font:600 11px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--graphite);background:var(--desk);white-space:nowrap}
+td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+tfoot td{font-weight:600;border-top:1px solid var(--ink);border-bottom:0}
+tbody tr:last-child td{border-bottom:0}
+
+/* Register */
+.reg td.k{font-family:var(--mono);text-align:center;width:54px}
+.reg .dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--ink)}
+.reg .no{color:var(--lo)}
+
+/* Area bars */
+.bars{display:grid;gap:6px}
+.bar-row{display:grid;grid-template-columns:150px minmax(0,1fr) 64px;gap:10px;align-items:center;font-size:13px}
+.bar-row .track{height:12px;background:var(--lo);position:relative}
+.bar-row .fill{position:absolute;inset:0 auto 0 0;background:var(--ink)}
+.bar-row .fill.svc{background:var(--mid)}
+.bar-row .v{font-family:var(--mono);text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:520px){.bar-row{grid-template-columns:110px minmax(0,1fr) 52px}}
+
+/* Adjacency */
+.adj{font-size:12px}
+.adj th,.adj td{padding:0;border:1px solid var(--rule);text-align:center}
+.adj thead th{height:118px;vertical-align:bottom;padding:6px 0;background:var(--sheet);white-space:nowrap}
+.adj thead th span{writing-mode:vertical-rl;transform:rotate(180deg);font:500 11px/1 var(--mono);letter-spacing:.04em;text-transform:none}
+.adj tbody th{text-align:left;padding:4px 8px;font:500 12px/1.2 var(--body);white-space:nowrap;background:var(--sheet)}
+.adj td{width:34px;height:30px;font:500 11px/1 var(--mono)}
+.adj td.H{background:var(--hi);color:var(--sheet)}
+.adj td.M{background:var(--mid);color:#fff}
+.adj td.L{background:var(--lo);color:var(--graphite)}
+.adj td.X{background:repeating-linear-gradient(45deg,var(--sheet) 0 4px,var(--rule) 4px 5px)}
+.adj td.dim,.adj th.dim{opacity:.22}
+.adj td.sel{outline:2px solid var(--red);outline-offset:-2px}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12.5px;align-items:center}
+.legend i{display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:6px}
+.filter{display:flex;gap:6px;flex-wrap:wrap}
+.filter button{border:1px solid var(--rule);background:var(--sheet);color:var(--ink);padding:6px 10px;font:500 12px/1 var(--mono);cursor:pointer}
+.filter button[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:var(--sheet)}
+
+/* Title block */
+.tb{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--ink)}
+.tb div{padding:10px 14px;border-right:1px solid var(--rule);min-width:0}
+.tb div:last-child{border-right:0}
+.tb b{display:block;font:500 13px/1.35 var(--mono);margin-top:3px;word-break:break-word}
+@media (max-width:760px){.tb{grid-template-columns:repeat(2,minmax(0,1fr))}.tb div:nth-child(2){border-right:0}.tb div:nth-child(n+3){border-top:1px solid var(--rule)}}
+
+/* Cover */
+.cover-h{padding:28px 18px 22px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;align-items:end}
+.cover-h h1{font:800 clamp(36px,5vw,64px)/.95 var(--display);font-stretch:121%;text-transform:uppercase;letter-spacing:-.005em}
+.cover-h h1 span{display:block;color:var(--red)}
+.cover-h p{font-size:16.5px;max-width:46ch}
+@media (max-width:760px){.cover-h{grid-template-columns:1fr}}
+.offer{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--ink)}
+.offer div{padding:14px;border-right:1px solid var(--rule);min-width:0}
+.offer div:last-child{border-right:0}
+.offer h3{font:700 15px/1.2 var(--display);font-stretch:112%;margin-bottom:6px}
+.offer p{font-size:13.5px;color:var(--graphite)}
+@media (max-width:860px){.offer{grid-template-columns:repeat(2,minmax(0,1fr))}.offer div:nth-child(2){border-right:0}.offer div:nth-child(n+3){border-top:1px solid var(--rule)}}
+@media (max-width:480px){.offer{grid-template-columns:1fr}.offer div{border-right:0}.offer div+div{border-top:1px solid var(--rule)}}
+
+.note{border-left:3px solid var(--red);background:var(--red-soft);padding:10px 14px;font-size:14px}
+.mood{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.mood img{width:100%;aspect-ratio:3/4;object-fit:cover;cursor:zoom-in}
+@media (max-width:760px){.mood{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.swatch-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.swatch-row div{border:1px solid var(--rule);min-width:0}
+.swatch-row i{display:block;height:64px}
+.swatch-row span{display:block;padding:6px 8px;font:500 11.5px/1.35 var(--mono)}
+@media (max-width:640px){.swatch-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.loopsvg text{font-family:var(--mono);fill:var(--ink)}
+
+footer{font:500 12px/1.4 var(--mono);color:var(--graphite);padding:6px 2px}
+
+dialog.lb{border:0;padding:0;background:transparent;max-width:96vw;max-height:94vh}
+dialog.lb::backdrop{background:rgba(12,14,15,.9)}
+dialog.lb img{max-height:86vh;width:auto;margin:auto;background:#fff}
+dialog.lb p{color:#ddd;text-align:center;font:500 12px var(--mono);margin-top:8px;text-transform:uppercase;letter-spacing:.06em}
+dialog.lb button{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));right:calc(14px + env(safe-area-inset-right,0px));background:#fff;color:#111;border:0;padding:8px 14px;font:600 12px var(--mono);cursor:pointer}
+.print-only{display:none}
+
+/* Print / PDF: A4 landscape drawing set, one sheet per page, both plan states shown */
+@page{size:A4 landscape;margin:9mm 10mm}
+@media print{
+  :root,:root:not([data-theme="light"]),:root[data-theme="dark"]{
+    --desk:#FFFFFF; --sheet:#FFFFFF; --ink:#1B1E1F; --graphite:#5A6062; --rule:#C7CAC3; --grid:rgba(0,0,0,0);
+    --red:#B8322A; --red-soft:#F3DEDA; --hi:#1B1E1F; --mid:#8A9092; --lo:#D9DBD6; color-scheme:light;
+  }
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{background:#fff;font-size:12.5px}
+  .shell{display:block;padding:0;max-width:none}
+  .index,dialog,.tog .bar,.filter{display:none!important}
+  main{display:block}
+  .sheet{break-before:page;border-width:1px}
+  .sheet:first-child{break-before:auto}
+  .print-only{display:block}
+  .tog{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .cols>.tog{grid-column:1/-1}
+  .tog .dwg img{aspect-ratio:4/3}
+  .body{gap:16px;padding:14px}
+  .dwg,.ren,tr,.bar-row,ul.spec li,.offer>div{break-inside:avoid}
+  .cols{grid-template-columns:1fr 1fr}
+  .cols3{grid-template-columns:repeat(3,1fr)}
+  .strip-imgs{grid-template-columns:repeat(4,1fr)}
+  .offer{grid-template-columns:repeat(4,1fr)}
+  .tb{grid-template-columns:repeat(4,1fr)}
+  .dwg img,.tog .dwg img{max-height:105mm!important;object-fit:contain!important;width:100%}
+  .ren img{aspect-ratio:16/10}
+  .mood{grid-template-columns:repeat(6,1fr)}
+  .mood img{aspect-ratio:1}
+  .cover-h{padding:18px 14px}
+  ul.spec{font-size:12px;gap:3px}
+  .h{margin-bottom:6px}
+  .prose{font-size:12.5px}
+  table{font-size:12px}
+  th,td{padding:5px 8px}
+  .cover-h h1{font-size:54px}
+  .adj thead th{height:96px}
+  footer{padding-top:8px}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<nav class="index" aria-label="Sheet index">
+  <h2>Sheet index</h2>
+  <ol>
+    <li><a href="#ts-00"><span>TS-00</span><span>Profile &amp; capabilities</span></a></li>
+    <li><a href="#ts-01"><span>TS-01</span><span>Kinungi Bungalow</span></a></li>
+    <li><a href="#ts-02"><span>TS-02</span><span>The Burger Joint</span></a></li>
+    <li><a href="#ts-03"><span>TS-03</span><span>Hyper Game Zone</span></a></li>
+    <li><a href="#ts-04"><span>TS-04</span><span>Art Gallery Pavilion</span></a></li>
+    <li><a href="#ts-05"><span>TS-05</span><span>Office fit-outs</span></a></li>
+    <li><a href="#ts-06"><span>TS-06</span><span>The Loop studio</span></a></li>
+  </ol>
+  <div class="meta"><span class="lbl">Drawn in</span><b class="mono" style="font-size:12.5px">ArchiCAD · Twinmotion · Lumion</b><span class="lbl" style="margin-top:6px">Contact</span><b class="mono" style="font-size:12.5px">On request</b></div>
+</nav>
+
+<main>
+
+<!-- TS-00 -->
+<section class="sheet" id="ts-00">
+  <div class="cover-h">
+    <div>
+      <p class="lbl" style="margin-bottom:12px">Technical folio · 2026 · Westlands, Nairobi</p>
+      <h1>Fixture World Designs <span>Interior Design</span></h1>
+    </div>
+    <p>I take a brief from survey to build-ready drawings: site analysis, programming, adjacency, existing-versus-proposed plans, sections and interior elevations with finish callouts, and photo-real renders. Universal Design principles set the dimensions from the first sketch. I am looking for studios that need a dependable second pair of hands on documentation and visualisation.</p>
+  </div>
+  <div class="offer">
+    <div><h3>Documentation</h3><p>Dimensioned GA plans on structural grids, sections, interior elevations, finish callouts.</p></div>
+    <div><h3>Analysis &amp; programme</h3><p>Site inventory, climate, utilities and sensory analysis; accommodation schedules; adjacency matrices.</p></div>
+    <div><h3>Visualisation</h3><p>Twinmotion and Lumion stills and walkthroughs from your model or mine.</p></div>
+    <div><h3>Accessibility</h3><p>Universal Design checks: step-free routes, accessible WCs, circulation widths, slip-resistant wet areas.</p></div>
+  </div>
+  <div class="body" style="border-top:1px solid var(--ink)">
+    <div>
+      <div class="h">Capability register <span class="lbl">● = shown on sheet</span></div>
+      <div class="tbl-wrap">
+        <table class="reg">
+          <thead><tr><th>Deliverable</th><th class="n">01</th><th class="n">02</th><th class="n">03</th><th class="n">04</th><th class="n">05</th><th class="n">06</th></tr></thead>
+          <tbody id="reg"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="tb">
+    <div><span class="lbl">Role</span><b>Lead interior designer</b></div>
+    <div><span class="lbl">Practice</span><b>Fixture World Designs</b></div>
+    <div><span class="lbl">Base</span><b>Westlands, Nairobi</b></div>
+    <div><span class="lbl">Contact</span><b>Shared on request</b></div>
+  </div>
+</section>
+
+<!-- TS-01 -->
+<section class="sheet" id="ts-01">
+  <div class="strip">
+    <div class="code">TS-01</div>
+    <div class="t"><h2>Kinungi Bungalow</h2><p class="sub">Residential redesign · Kinungi, Nairobi–Naivasha Highway · 3 bed, all ensuite</p></div>
+    <div class="r"><span class="lbl">Sheets</span><b>Bubble · GA ×2 · S-01 · IE ×2</b><span class="lbl">Tools</span><b>ArchiCAD, Twinmotion</b></div>
+  </div>
+  <div class="body">
+    <div class="cols">
+      <div>
+        <div class="h">Problem statement</div>
+        <p class="prose">The existing plan (14.76 m overall) was congested: undersized rooms and no clear circulation. The survey drawing set the problem statement; the redesign applies Universal Design guidelines so the house needs no adaptive features later.</p>
+        <div class="h" style="margin-top:20px">Programme after redesign</div>
+        <ul class="spec">
+          <li>Master bedroom + 2 bedrooms, each ensuite</li>
+          <li>Study, laundry, pantry</li>
+          <li>Open living / dining with L-shaped kitchen and island</li>
+          <li>Entrance hall as the social–private hinge (see bubble diagram)</li>
+        </ul>
+      </div>
+      <figure class="dwg"><img src="assets/bung-living-dining.jpg" alt="Render: living and dining" data-lb style="aspect-ratio:16/10;object-fit:cover"><figcaption><span>Render · living / dining</span><b>Twinmotion</b></figcaption></figure>
+    </div>
+
+    <div class="cols">
+      <figure class="dwg fixed"><img src="assets/n-bubble.jpg" alt="Bubble diagram: social, private and work zones and their links" data-lb onerror="this.src='assets/bung-plan-existing.jpg'"><figcaption><span>Bubble diagram · social / private / work</span><b>Diagram</b></figcaption></figure>
+      <div class="tog" data-tog>
+        <div class="bar" role="group" aria-label="Plan state"><button type="button" aria-pressed="true" data-src="assets/bung-plan-existing.jpg" data-cap="GA plan · existing">Existing</button><button type="button" aria-pressed="false" data-src="assets/bung-plan-proposed.jpg" data-cap="GA plan · proposed">Proposed</button></div>
+        <figure class="dwg"><img src="assets/bung-plan-existing.jpg" alt="GA floor plan" data-lb><figcaption><span data-cap>GA plan · existing</span><b>1:100</b></figcaption></figure>
+      </div>
+    </div>
+
+    <div class="cols">
+      <div>
+        <div class="h">Section S-01 · construction callouts</div>
+        <ul class="spec">
+          <li>30° pitched roof, French red clay tiles</li>
+          <li>Plastic ceiling board; waterproof gypsum in wet areas</li>
+          <li>Hardwood mahogany doors</li>
+          <li>Clear glazing in aluminium frames</li>
+          <li>Stone structural walls, white paint finish</li>
+          <li>Hardwood floor</li>
+        </ul>
+      </div>
+      <div class="cols" style="gap:10px">
+        <figure class="dwg"><img src="assets/bung-section-1.jpg" alt="Section S-01" data-lb><figcaption><span>S-01</span><b>Section</b></figcaption></figure>
+        <figure class="dwg"><img src="assets/bung-elev-1.jpg" alt="Interior elevation, 2,500 high" data-lb><figcaption><span>IE-01 · h 2,500</span><b>Elev.</b></figcaption></figure>
+      </div>
+    </div>
+
+    <div>
+      <div class="h">Finishes schedule</div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>Space</th><th>Floor</th><th>Wall / ceiling</th><th>Design rationale</th></tr></thead>
+        <tbody>
+          <tr><td>Living</td><td>Polished mahogany hardwood panels</td><td>White scheme; tray ceiling</td><td>Modern, warm luxury; large windows for daylight and views</td></tr>
+          <tr><td>Dining</td><td>Polished laminated tile</td><td>Open to living</td><td>Feature dining set as focal point</td></tr>
+          <tr><td>Kitchen</td><td>Non-slip porcelain tile</td><td>—</td><td>Wet area safety; L-shape + island maximises floor use</td></tr>
+          <tr><td>Bedrooms</td><td>Polished wood parquet</td><td>—</td><td>Warmth underfoot; natural light to every room</td></tr>
+          <tr><td>Master bedroom</td><td>Polished wood parquet</td><td>Curtain wall</td><td>Daylight and garden views; generous turning space</td></tr>
+          <tr><td>Washrooms</td><td>Non-slip porcelain tile</td><td>Marble wall finish</td><td>Resists water and cleaning chemicals; sized for easy circulation</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="strip-imgs">
+      <figure class="ren"><img src="assets/bung-dining.jpg" alt="Dining render" data-lb><figcaption><span>Dining</span><b>R-01</b></figcaption></figure>
+      <figure class="ren"><img src="assets/bung-master.jpg" alt="Master bedroom render" data-lb><figcaption><span>Master bed</span><b>R-02</b></figcaption></figure>
+      <figure class="ren"><img src="assets/bung-bed-1.jpg" alt="Bedroom render" data-lb><figcaption><span>Bedroom</span><b>R-03</b></figcaption></figure>
+      <figure class="ren"><img src="assets/bung-exterior.jpg" alt="Exterior render" data-lb><figcaption><span>Exterior</span><b>R-04</b></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- TS-02 -->
+<section class="sheet" id="ts-02">
+  <div class="strip">
+    <div class="code">TS-02</div>
+    <div class="t"><h2>The Burger Joint</h2><p class="sub">Hospitality · Kinungi township, Naivasha–Nakuru highway · restaurant, snack bar, butchery</p></div>
+    <div class="r"><span class="lbl">Sheets</span><b>GA ×2 · Sections ×3</b><span class="lbl">Tools</span><b>ArchiCAD, Twinmotion, Lumion</b></div>
+  </div>
+  <div class="body">
+    <div class="cols">
+      <div>
+        <div class="h">Existing accommodation <span class="lbl">from survey</span></div>
+        <div class="tbl-wrap"><table>
+          <thead><tr><th>Ref</th><th>Space</th><th class="n">Area m²</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">01</td><td>Butchery</td><td class="n">17.63</td></tr>
+            <tr><td class="mono">02</td><td>Snack shop</td><td class="n">16.46</td></tr>
+            <tr><td class="mono">03</td><td>Dining area</td><td class="n">40.07</td></tr>
+            <tr><td class="mono">04</td><td>Kitchen</td><td class="n">15.40</td></tr>
+            <tr><td class="mono">05</td><td>Store</td><td class="n">7.40</td></tr>
+            <tr><td class="mono">06</td><td>Passage</td><td class="n">12.47</td></tr>
+          </tbody>
+          <tfoot><tr><td></td><td>Total surveyed</td><td class="n">109.43</td></tr></tfoot>
+        </table></div>
+        <p class="note" style="margin-top:14px">Redesign removes the 12.47 m² passage and the cellular split, returning that area to one open dining hall with kitchen, snack counter and butchery on its perimeter.</p>
+      </div>
+      <div class="tog" data-tog>
+        <div class="bar" role="group" aria-label="Plan state"><button type="button" aria-pressed="true" data-src="assets/bj-plan-existing.jpg" data-cap="GA plan · existing">Existing</button><button type="button" aria-pressed="false" data-src="assets/bj-plan-proposed.jpg" data-cap="GA plan · proposed">Proposed</button></div>
+        <figure class="dwg"><img src="assets/bj-plan-existing.jpg" alt="Restaurant GA plan" data-lb><figcaption><span data-cap>GA plan · existing</span><b>1:100</b></figcaption></figure>
+      </div>
+    </div>
+    <figure class="dwg"><img src="assets/bj-sections.jpg" alt="Proposed plan with three sections through dining, kitchen and counter" data-lb><figcaption><span>Proposed plan + sections A, B, C</span><b>Sections</b></figcaption></figure>
+    <div class="cols3">
+      <div><div class="h">Dining</div><ul class="spec"><li>Wood parquet floor; layered timber finishes</li><li>Warm ambient lighting, brass chandeliers</li></ul></div>
+      <div><div class="h">Kitchen &amp; butchery</div><ul class="spec"><li>Porcelain tile: waterproof, fire-resistant, non-slip when wet</li><li>Task lighting over work surfaces</li></ul></div>
+      <div><div class="h">Counter</div><ul class="spec"><li>Raised platform, white marble top</li><li>Stain-resistant, non-slip on water contact</li></ul></div>
+    </div>
+    <div class="strip-imgs">
+      <figure class="ren"><img src="assets/bj-welcome.jpg" alt="Dining hall render" data-lb><figcaption><span>Dining hall</span><b>R-01</b></figcaption></figure>
+      <figure class="ren"><img src="assets/bj-4.jpg" alt="Counter render" data-lb><figcaption><span>Counter</span><b>R-02</b></figcaption></figure>
+      <figure class="ren"><img src="assets/bj-dining.jpg" alt="Window tables render" data-lb><figcaption><span>Window bay</span><b>R-03</b></figcaption></figure>
+      <figure class="ren"><img src="assets/bj-6.jpg" alt="Media wall render" data-lb><figcaption><span>Media wall</span><b>R-04</b></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- TS-03 -->
+<section class="sheet" id="ts-03">
+  <div class="strip">
+    <div class="code">TS-03</div>
+    <div class="t"><h2>Hyper Game Zone</h2><p class="sub">Leisure · Westlands, Nairobi · 25.0 m overall · Universal Design audit and refit</p></div>
+    <div class="r"><span class="lbl">Sheets</span><b>GA ×2 · Elevations ×4</b><span class="lbl">Tools</span><b>ArchiCAD, Twinmotion</b></div>
+  </div>
+  <div class="body">
+    <div class="cols">
+      <div class="tog" data-tog>
+        <div class="bar" role="group" aria-label="Plan state"><button type="button" aria-pressed="true" data-src="assets/hgz-plan-existing.jpg" data-cap="GA plan · existing">Existing</button><button type="button" aria-pressed="false" data-src="assets/hgz-plan-proposed.jpg" data-cap="GA plan · proposed">Proposed</button></div>
+        <figure class="dwg"><img src="assets/hgz-plan-existing.jpg" alt="Game zone GA plan" data-lb><figcaption><span data-cap>GA plan · existing</span><b>1:100</b></figcaption></figure>
+      </div>
+      <div>
+        <div class="h">Zoning, proposed</div>
+        <ul class="spec">
+          <li>Activity: bowling, pool, table tennis, video games, kids’ play</li>
+          <li>Support: reception, dining, kitchen, lounge, changing rooms, storage</li>
+          <li>Washrooms grouped on the service side</li>
+        </ul>
+        <div class="h" style="margin-top:20px">Fabric &amp; finishes</div>
+        <ul class="spec">
+          <li>Concrete structural columns; 200 mm stone structural walls</li>
+          <li>Aluminium-framed windows; extensive internal glazing</li>
+          <li>Ceramic non-slip floor tiles throughout activity zones</li>
+          <li>Per-game themed wall graphics; mixed palette in kids’ zone</li>
+          <li>Ambient lighting reflected off glass to enlarge the halls</li>
+        </ul>
+      </div>
+    </div>
+    <div class="cols" style="gap:10px">
+      <figure class="dwg"><img src="assets/hgz-elev-1.jpg" alt="Elevations with construction callouts" data-lb><figcaption><span>Elevations · callouts</span><b>E-01/02</b></figcaption></figure>
+      <figure class="dwg"><img src="assets/hgz-elev-2.jpg" alt="Dimensioned elevations" data-lb><figcaption><span>Elevations · dimensioned</span><b>E-03/04</b></figcaption></figure>
+    </div>
+    <div class="strip-imgs">
+      <figure class="ren"><img src="assets/hgz-bowling.jpg" alt="Bowling render" data-lb><figcaption><span>Bowling</span><b>R-01</b></figcaption></figure>
+      <figure class="ren"><img src="assets/hgz-tabletennis.jpg" alt="Table tennis render" data-lb><figcaption><span>Table tennis</span><b>R-02</b></figcaption></figure>
+      <figure class="ren"><img src="assets/hgz-b.jpg" alt="Pool render" data-lb><figcaption><span>Pool</span><b>R-03</b></figcaption></figure>
+      <figure class="ren"><img src="assets/hgz-entry.jpg" alt="Entry render" data-lb><figcaption><span>Entry</span><b>R-04</b></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- TS-04 -->
+<section class="sheet" id="ts-04">
+  <div class="strip">
+    <div class="code">TS-04</div>
+    <div class="t"><h2>Art Gallery Pavilion</h2><p class="sub">Cultural · circular plan · reception, two galleries, office, store, WC, verandah</p></div>
+    <div class="r"><span class="lbl">Sheets</span><b>GA · Sections · Elev ×5 · Detail</b><span class="lbl">Tools</span><b>ArchiCAD</b></div>
+  </div>
+  <div class="body">
+    <div class="cols">
+      <figure class="dwg"><img src="assets/gal-plan.jpg" alt="Circular gallery GA plan" data-lb style="max-height:620px;object-fit:contain;width:100%"><figcaption><span>GA plan · 3,550 / 3,700 / 3,519 bays</span><b>1:100</b></figcaption></figure>
+      <div>
+        <div class="h">Space programme</div>
+        <ul class="spec">
+          <li>Entrance: welcome and branded reception</li>
+          <li>Main gallery: open plan, adjustable lighting, modular display system</li>
+          <li>Private viewing room for select pieces</li>
+          <li>Back-of-house: secure storage and handling</li>
+          <li>Rest seating within the galleries</li>
+        </ul>
+        <div class="h" style="margin-top:20px">Section callouts</div>
+        <ul class="spec">
+          <li>Roof: 28-gauge GCI sheets, 12° pitch on steel trusses</li>
+          <li>Terrace seating: steel plate, 450 mm step</li>
+          <li>1,500 mm CHS guard rail with heavy-duty mesh infill</li>
+          <li>Section heights 4,050 + 2,535 = 6,585 mm</li>
+          <li>Ablutions: 22.5° roof, RC beam, clay vent blocks @ 1,200 mm, 150 mm masonry</li>
+        </ul>
+        <figure class="ren" style="margin-top:18px"><img src="assets/gal-exterior.jpg" alt="Gallery exterior render" data-lb><figcaption><span>Exterior</span><b>R-01</b></figcaption></figure>
+      </div>
+    </div>
+    <div class="cols" style="gap:10px">
+      <figure class="dwg"><img src="assets/gal-sections.jpg" alt="Sections through terrace seating and ablutions" data-lb><figcaption><span>Sections · terrace + ablutions E-T1</span><b>Section</b></figcaption></figure>
+      <figure class="dwg"><img src="assets/gal-elevations.jpg" alt="Five gallery elevations" data-lb><figcaption><span>Elevations ×5</span><b>Elev.</b></figcaption></figure>
+    </div>
+    <div class="cols" style="gap:10px">
+      <figure class="dwg"><img src="assets/gal-reception-detail.jpg" alt="Reception area plan, elevations and joinery details" data-lb><figcaption><span>Reception area · plan, IE, joinery</span><b>Detail</b></figcaption></figure>
+      <div class="cols" style="gap:10px">
+        <figure class="ren"><img src="assets/gal-reception.jpg" alt="Reception render" data-lb><figcaption><span>Reception</span><b>R-02</b></figcaption></figure>
+        <figure class="ren"><img src="assets/gal-art-wall.jpg" alt="Display wall render" data-lb><figcaption><span>Display wall</span><b>R-03</b></figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TS-05 -->
+<section class="sheet" id="ts-05">
+  <div class="strip">
+    <div class="code">TS-05</div>
+    <div class="t"><h2>Office Fit-outs</h2><p class="sub">Workplace · 5th Floor Tower B (gallery staff offices) and Northern Wing, multi-storey commercial office</p></div>
+    <div class="r"><span class="lbl">Sheets</span><b>GA ×2 · IE ×9 · Sections</b><span class="lbl">Grid</span><b>6,000 mm bays</b></div>
+  </div>
+  <div class="body">
+    <div class="cols">
+      <figure class="dwg"><img src="assets/wp-tower-b-plan.jpg" alt="5th Floor Tower B general arrangement on 6,000 mm grid" data-lb style="max-height:720px;object-fit:contain;width:100%"><figcaption><span>5th Floor Tower B · GA</span><b>New wall in red</b></figcaption></figure>
+      <div>
+        <div class="h">Tower B · design basis</div>
+        <ul class="spec">
+          <li>Layout: open workstation pools with private offices for Assistant Directors 1–4 and Principal Research Officers</li>
+          <li>Boardroom, two halls, secretary, lobby, coffee station</li>
+          <li>Mothers’ room; female and male accessible WCs</li>
+          <li>Structure: 6,000 mm grid, 14,600 mm span; RC stair, 160 mm risers / 250 mm treads</li>
+          <li>Floors: 600×600 porcelain; ceramic tile to wet areas</li>
+          <li>Ergonomic furniture, modular shelving, adjustable task lighting</li>
+          <li>Acoustic panels and partitions for confidentiality</li>
+          <li>Adequate power, data and cable management at every desk</li>
+        </ul>
+        <div class="h" style="margin-top:20px">Northern Wing · room data</div>
+        <div class="tbl-wrap"><table>
+          <thead><tr><th>Room</th><th>Floor finish</th></tr></thead>
+          <tbody>
+            <tr><td>Executive boardroom</td><td>Carpet</td></tr>
+            <tr><td>Boardroom</td><td>Ceramic tile</td></tr>
+            <tr><td>Transport · Accounts · Principal ICT offices</td><td>Ceramic tile</td></tr>
+            <tr><td>Shared office space</td><td>Ceramic tile</td></tr>
+            <tr><td>Entry lobby · server room · mothers’ room</td><td>Ceramic tile</td></tr>
+            <tr><td>Corridors</td><td>Ceramic tile / carpet</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+    <div class="cols" style="gap:10px">
+      <figure class="dwg"><img src="assets/wp-northern-wing.jpg" alt="Northern Wing proposed floor plan" data-lb style="max-height:640px;object-fit:contain;width:100%"><figcaption><span>Northern Wing · proposed GA</span><b>IE-1…13 keyed</b></figcaption></figure>
+      <div style="display:grid;gap:10px;align-content:start">
+        <figure class="dwg"><img src="assets/wp-int-elev.jpg" alt="Interior elevations sheet with finish callouts" data-lb><figcaption><span>Interior elevations · finish callouts</span><b>IE</b></figcaption></figure>
+        <figure class="dwg"><img src="assets/wp-sections.jpg" alt="Office sections" data-lb><figcaption><span>Sections S-01…S-08</span><b>Section</b></figcaption></figure>
+      </div>
+    </div>
+    <div class="strip-imgs">
+      <figure class="ren"><img src="assets/wp-boardroom-pebble.jpg" alt="Boardroom render" data-lb><figcaption><span>Boardroom</span><b>R-01</b></figcaption></figure>
+      <figure class="ren"><img src="assets/wp-training.jpg" alt="Hall render" data-lb><figcaption><span>Hall</span><b>R-02</b></figcaption></figure>
+      <figure class="ren"><img src="assets/wp-conference.jpg" alt="Conference render" data-lb><figcaption><span>Conference</span><b>R-03</b></figcaption></figure>
+      <figure class="ren"><img src="assets/wp-lounge.jpg" alt="Lounge render" data-lb><figcaption><span>Lounge</span><b>R-04</b></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- TS-06 -->
+<section class="sheet" id="ts-06">
+  <div class="strip">
+    <div class="code">TS-06</div>
+    <div class="t"><h2>The Loop</h2><p class="sub">Workplace concept · creative sustainable office for a public-sector design department · interior, graphic and product teams</p></div>
+    <div class="r"><span class="lbl">Sheets</span><b>Analysis ×8 · Programme · GA ×4</b><span class="lbl">Capacity</span><b>≈ 60 staff</b></div>
+  </div>
+  <div class="body">
+    <div class="cols3">
+      <div>
+        <div class="h">Site inventory</div>
+        <ul class="spec">
+          <li>First floor, multi-storey commercial building; stair and lift from lobby</li>
+          <li>Flat terrain on an elevated hill site; commercial and retail neighbours</li>
+          <li>Concrete walls; aluminium-glass partitions; exposed beam-and-slab ceiling</li>
+          <li>Double sliding windows; mahogany doors; tiled floors</li>
+          <li>Marked exits, smoke detectors, extinguishers, lift access</li>
+        </ul>
+      </div>
+      <div>
+        <div class="h">Climate &amp; sensory</div>
+        <ul class="spec">
+          <li>Vertical shading to E/W glazing against low-angle glare</li>
+          <li>Workstations to the well-lit north façade; meeting, storage and services to darker façades</li>
+          <li>Overhangs for high sun; operable SE windows, high-level openings opposite for cross-ventilation</li>
+          <li>Road and court noise: acoustic panels, soft furnishing, window seals</li>
+          <li>Frosted lower films or planters to screen traffic views</li>
+        </ul>
+      </div>
+      <div>
+        <div class="h">Audit findings</div>
+        <ul class="spec">
+          <li>Desks too densely packed; no transition zones; no growth capacity</li>
+          <li>Circulation crosses quiet work zones</li>
+          <li>Too few desks for 60 people; worn furniture; no integrated storage</li>
+          <li>Broken blinds; dated fluorescent fittings; no acoustic treatment</li>
+          <li>Too few outlets, cable clutter; uneven AC coverage</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="strip-imgs">
+      <figure class="dwg"><img src="assets/loop-climate.jpg" alt="Climate analysis: sun path and wind" data-lb style="aspect-ratio:4/3;object-fit:contain"><figcaption><span>Climate</span><b>A-01</b></figcaption></figure>
+      <figure class="dwg"><img src="assets/loop-sensory.jpg" alt="Sensory analysis: noise and views" data-lb style="aspect-ratio:4/3;object-fit:contain"><figcaption><span>Sensory</span><b>A-02</b></figcaption></figure>
+      <figure class="dwg"><img src="assets/loop-noise-int.jpg" alt="Interior acoustics: absorption, reflection, diffusion" data-lb style="aspect-ratio:4/3;object-fit:contain"><figcaption><span>Acoustics</span><b>A-03</b></figcaption></figure>
+      <figure class="dwg"><img src="assets/loop-site-2.jpg" alt="Site photo: existing workstation clutter" data-lb style="aspect-ratio:4/3;object-fit:cover"><figcaption><span>Site photo</span><b>P-01</b></figcaption></figure>
+    </div>
+
+    <div class="cols">
+      <div>
+        <div class="h">Accommodation schedule <span class="lbl">rebuilt from the programme sheet</span></div>
+        <div class="tbl-wrap"><table>
+          <thead><tr><th>Space</th><th>Breakdown</th><th class="n">Users</th><th class="n">m²</th></tr></thead>
+          <tbody id="acc"></tbody>
+          <tfoot><tr><td>Total</td><td></td><td class="n" id="accU"></td><td class="n" id="accA"></td></tr></tfoot>
+        </table></div>
+      </div>
+      <div>
+        <div class="h">Area by space <span class="lbl">to scale, m²</span></div>
+        <div class="bars" id="bars"></div>
+        <div class="legend" style="margin-top:12px"><span><i style="background:var(--ink)"></i>Work and meeting</span><span><i style="background:var(--mid)"></i>Support</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="h">Adjacency matrix <span class="lbl">select a row or column to trace it</span></div>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <div class="legend"><span><i style="background:var(--hi)"></i>H · essential</span><span><i style="background:var(--mid)"></i>M · desirable</span><span><i style="background:var(--lo)"></i>L · not needed</span></div>
+        <div class="filter" role="group" aria-label="Show relationships"><button type="button" aria-pressed="true" data-f="all">All</button><button type="button" aria-pressed="false" data-f="H">H only</button><button type="button" aria-pressed="false" data-f="HM">H + M</button></div>
+      </div>
+      <div class="tbl-wrap" style="border:0"><table class="adj" id="adj" style="width:auto"></table></div>
+      <p id="adjOut" class="note" style="margin-top:12px">Interior, graphic and product design each rate the chief designer, informal boardroom, attaché area and print room as essential neighbours. That cluster forms the core of the loop.</p>
+    </div>
+
+    <div class="cols">
+      <div>
+        <div class="h">Concept · “Where ideas evolve without end”</div>
+        <svg class="loopsvg" viewBox="0 0 460 300" role="img" aria-label="Studio loop: inspiration, ideation, development, feedback, presentation" style="width:100%;height:auto">
+          <defs><marker id="a2" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--red)"/></marker></defs>
+          <ellipse cx="230" cy="150" rx="185" ry="105" fill="none" stroke="var(--rule)" stroke-width="22"/>
+          <path d="M230 45 A185 105 0 1 1 229 45" fill="none" stroke="var(--red)" stroke-width="1.4" stroke-dasharray="5 6" marker-end="url(#a2)"/>
+          <g font-size="11.5" text-anchor="middle">
+            <rect x="185" y="33" width="90" height="24" fill="var(--sheet)" stroke="var(--ink)"/><text x="230" y="49">INSPIRATION</text>
+            <rect x="360" y="112" width="84" height="24" fill="var(--sheet)" stroke="var(--ink)"/><text x="402" y="128">IDEATION</text>
+            <rect x="290" y="232" width="104" height="24" fill="var(--sheet)" stroke="var(--ink)"/><text x="342" y="248">DEVELOPMENT</text>
+            <rect x="70" y="232" width="88" height="24" fill="var(--sheet)" stroke="var(--ink)"/><text x="114" y="248">FEEDBACK</text>
+            <rect x="12" y="112" width="104" height="24" fill="var(--sheet)" stroke="var(--ink)"/><text x="64" y="128">PRESENTATION</text>
+          </g>
+          <text x="230" y="146" text-anchor="middle" font-size="11" style="fill:var(--graphite)">circular spatial flow</text>
+          <text x="230" y="164" text-anchor="middle" font-size="11" style="fill:var(--graphite)">research · sketch · prototype · test · refine</text>
+        </svg>
+        <ul class="spec" style="margin-top:10px">
+          <li>Spatial: zones in a looped sequence the team walks while working</li>
+          <li>Visual: circular furniture clusters, light fittings, floor inlays and ceiling features; lemniscate supergraphics</li>
+          <li>Cultural: walls that display earlier versions of work as part of the story</li>
+          <li>Derived from the client department’s own logo geometry</li>
+        </ul>
+      </div>
+      <div>
+        <div class="h">Sustainable materials</div>
+        <div class="swatch-row">
+          <div><i style="background:repeating-linear-gradient(0deg,#c9ab6c 0 14px,#b39253 14px 15px)"></i><span>Bamboo flooring</span></div>
+          <div><i style="background:linear-gradient(90deg,rgba(0,0,0,.18) 1px,transparent 1px) 0 0/50% 50%,linear-gradient(0deg,rgba(0,0,0,.18) 1px,transparent 1px) 0 0/50% 50%,#56606a"></i><span>Carpet tiles</span></div>
+          <div><i style="background:#e9e5dc"></i><span>Low-VOC paint</span></div>
+          <div><i style="background:linear-gradient(135deg,#dcdcd6,#c9c9c2)"></i><span>Recycled gypsum partitions</span></div>
+          <div><i style="background:radial-gradient(circle,#76817f 1.3px,transparent 1.5px) 0 0/8px 8px,#a2aca9"></i><span>Acoustic ceiling</span></div>
+        </div>
+        <div class="tog" data-tog style="margin-top:18px">
+          <div class="bar" role="group" aria-label="Plan layer"><button type="button" aria-pressed="true" data-src="assets/loop-plan-zoning.jpg" data-cap="GA · zoning">Zoning</button><button type="button" aria-pressed="false" data-src="assets/loop-plan-furnished.jpg" data-cap="GA · furnished">Furnished</button></div>
+          <figure class="dwg"><img src="assets/loop-plan-zoning.jpg" alt="Curved floor plan of the studio" data-lb style="aspect-ratio:3/4;object-fit:contain"><figcaption><span data-cap>GA · zoning</span><b>Colour-coded</b></figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="h">Mood references <span class="lbl">sourced imagery, not project renders</span></div>
+      <div class="mood">
+        <img src="assets/loop-mood-1.jpg" alt="Reference: cluster workstations" data-lb>
+        <img src="assets/loop-mood-2.jpg" alt="Reference: timber slat acoustic ceiling" data-lb>
+        <img src="assets/loop-mood-3.jpg" alt="Reference: wave wall graphic in lounge" data-lb>
+        <img src="assets/loop-mood-4.jpg" alt="Reference: curved reception desk" data-lb>
+        <img src="assets/loop-mood-5.jpg" alt="Reference: pebble floor inlay with planting" data-lb>
+        <img src="assets/loop-mood-6.jpg" alt="Reference: glazed meeting pod with supergraphic" data-lb>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>TS-00 to TS-06 · Fixture World Designs · Westlands, Nairobi. Drawings reproduced from the designer’s own sets; select any image to enlarge.</footer>
+</main>
+</div>
+
+<dialog class="lb" id="lb"><button type="button" id="lbx">Close</button><img alt="" id="lbi"><p id="lbc"></p></dialog>
+
+<script>
+(function(){
+  /* Capability register */
+  var reg=[
+    ["Accommodation schedule / programme",[6]],
+    ["Bubble diagram / adjacency matrix",[1,6]],
+    ["Site analysis: climate, utilities, sensory",[6]],
+    ["Existing vs proposed plans",[1,2,3]],
+    ["Dimensioned GA plans",[1,2,3,4,5,6]],
+    ["Sections with construction callouts",[1,4,5]],
+    ["Interior elevations with finishes",[1,2,3,4,5]],
+    ["Finishes / material specification",[1,2,3,5,6]],
+    ["FF&E audit and recommendations",[6]],
+    ["Acoustic strategy",[5,6]],
+    ["Universal Design / accessible WCs",[1,3,5,6]],
+    ["Photo-real renders",[1,2,3,4,5]]
+  ];
+  var tb=document.getElementById('reg');
+  reg.forEach(function(r){
+    var tr=document.createElement('tr'); var td=document.createElement('td'); td.textContent=r[0]; tr.appendChild(td);
+    for(var i=1;i<=6;i++){ var c=document.createElement('td'); c.className='k';
+      if(r[1].indexOf(i)>-1){ var a=document.createElement('a'); a.href='#ts-0'+i; a.setAttribute('aria-label',r[0]+' on sheet TS-0'+i); a.innerHTML='<span class="dot"></span>'; c.appendChild(a);} else { c.innerHTML='<span class="no">·</span>'; }
+      tr.appendChild(c);}
+    tb.appendChild(tr);
+  });
+
+  /* Accommodation schedule */
+  var acc=[
+    ["Chief designer","Main office 1 · secretary 2 · meeting 6",9,54,"w"],
+    ["Deputy chief designers","Interior 3 · product 3 · graphic 3",9,75,"w"],
+    ["Team leaders","Interior 1 · product 1 · graphic 1",3,39,"w"],
+    ["Senior officers","Interior 3 · product 3 · graphic 3",9,90,"w"],
+    ["Entry-level officers","Interior 4 · product 4 · graphic 4",12,72,"w"],
+    ["Interns","Interior 7 · product 6 · graphic 7",20,24,"w"],
+    ["Boardrooms","Formal 40 · informal 5",45,66,"w"],
+    ["Washrooms","Gents 4 · ladies 4 (fixtures)",8,52,"s"],
+    ["Reception","Receptionist",null,26,"s"],
+    ["Storage","",null,24.7,"s"],
+    ["Kitchenette","Sink, cooking, fridge, microwave",null,6.8,"s"]
+  ];
+  var tbody=document.getElementById('acc'), bars=document.getElementById('bars'), A=0, staff=0, max=0;
+  acc.forEach(function(r){ if(r[3]>max) max=r[3]; });
+  acc.forEach(function(r){
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td></td><td></td><td class="n"></td><td class="n"></td>';
+    tr.children[0].textContent=r[0]; tr.children[1].textContent=r[1];
+    tr.children[2].textContent=r[2]==null?'—':r[2]; tr.children[3].textContent=r[3].toFixed(1);
+    tbody.appendChild(tr); A+=r[3];
+    if(r[4]==='w' && r[0]!=='Boardrooms') staff+=r[2];
+    var b=document.createElement('div'); b.className='bar-row';
+    b.innerHTML='<span></span><span class="track"><span class="fill'+(r[4]==='s'?' svc':'')+'"></span></span><span class="v"></span>';
+    b.children[0].textContent=r[0]; b.querySelector('.fill').style.width=(r[3]/max*100)+'%'; b.children[2].textContent=r[3].toFixed(1);
+    bars.appendChild(b);
+  });
+  document.getElementById('accU').textContent=staff+' staff';
+  document.getElementById('accA').textContent=A.toFixed(1);
+
+  /* Adjacency matrix */
+  var names=["Reception","General boardroom","Chief designer","Informal boardroom","Interior design","Graphic design","Product design","Attaché area","Printing / resource","Kitchenette","Stores","Washrooms","Support staff"];
+  var short=["Recept.","Gen. brdrm","Chief des.","Inf. brdrm","Int. des.","Graph. des.","Prod. des.","Attaché","Print","Kitchen","Stores","Washrm","Support"];
+  var M=[
+    "-HMMLLLLLMLMH","H-HMMMMMLMLMM","MH-HHHHMMLLMM","MMH-HHHMMMLMM","LMHH-MMHHMLMM","LMHHM-MHHMLMM","LMHHMM-HHMLMM",
+    "LMMMHHH-HMLMM","LLMMHHHH-MLLM","MMLMMMMMM-LHH","LLLLLLLLLL-LH","MMMMMMMMLHL-M","HMMMMMMMMHHM-"];
+  var t=document.getElementById('adj'), h='<thead><tr><th></th>';
+  short.forEach(function(s){ h+='<th scope="col"><span>'+s+'</span></th>'; }); h+='</tr></thead><tbody>';
+  names.forEach(function(n,i){ h+='<tr><th scope="row" tabindex="0" data-r="'+i+'">'+n+'</th>';
+    for(var j=0;j<names.length;j++){ var v=M[i][j]; h+='<td class="'+(v==='-'?'X':v)+'" data-r="'+i+'" data-c="'+j+'" title="'+n+' ↔ '+names[j]+': '+(v==='-'?'same space':v)+'">'+(v==='-'?'':v)+'</td>'; }
+    h+='</tr>'; });
+  t.innerHTML=h+'</tbody>';
+  var filt='all', sel=null, out=document.getElementById('adjOut');
+  var lab={H:'essential',M:'desirable',L:'not needed'};
+  function paint(){
+    t.querySelectorAll('td').forEach(function(td){
+      var v=td.className.replace(/ (dim|sel)/g,'').trim();
+      var hide = (filt==='H' && v!=='H') || (filt==='HM' && v==='L');
+      var off = sel!==null && +td.dataset.r!==sel && +td.dataset.c!==sel;
+      td.classList.toggle('dim', (hide && v!=='X') || off);
+      td.classList.toggle('sel', sel!==null && (+td.dataset.r===sel) && !off && v!=='X');
+    });
+    if(sel!==null){
+      var hs=[], ms=[];
+      for(var j=0;j<names.length;j++){ if(M[sel][j]==='H') hs.push(names[j]); if(M[sel][j]==='M') ms.push(names[j]); }
+      out.textContent=names[sel]+': essential next to '+(hs.join(', ')||'none')+'. Desirable: '+(ms.length)+' spaces.';
+    }
+  }
+  t.addEventListener('click',function(e){ var c=e.target.closest('[data-r]'); if(!c) return; var r=+c.dataset.r; sel = sel===r? null : r; paint(); });
+  t.addEventListener('keydown',function(e){ if((e.key==='Enter'||e.key===' ') && e.target.matches('th[data-r]')){ e.preventDefault(); var r=+e.target.dataset.r; sel= sel===r?null:r; paint(); }});
+  document.querySelectorAll('.filter button').forEach(function(b){ b.addEventListener('click',function(){
+    document.querySelectorAll('.filter button').forEach(function(x){x.setAttribute('aria-pressed','false')}); b.setAttribute('aria-pressed','true'); filt=b.dataset.f; paint(); }); });
+
+  /* Existing / proposed toggles */
+  document.querySelectorAll('[data-tog]').forEach(function(g){
+    var img=g.querySelector('img'), cap=g.querySelector('[data-cap]:not(button)');
+    /* print copy of the second state, so the PDF shows both side by side */
+    var alt=g.querySelectorAll('button')[1];
+    if(alt){ var f=g.querySelector('figure').cloneNode(true); f.classList.add('print-only');
+      f.querySelector('img').src=alt.dataset.src; f.querySelector('[data-cap]').textContent=alt.dataset.cap; g.appendChild(f); }
+    g.querySelectorAll('button').forEach(function(b){ b.addEventListener('click',function(){
+      g.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed','false')}); b.setAttribute('aria-pressed','true');
+      img.src=b.dataset.src; if(cap) cap.textContent=b.dataset.cap; }); });
+  });
+
+  /* Lightbox */
+  var d=document.getElementById('lb'), i=document.getElementById('lbi'), c=document.getElementById('lbc');
+  document.addEventListener('click',function(e){
+    var el=e.target;
+    if(el.matches && el.matches('img[data-lb]')){ i.src=el.src; i.alt=el.alt; c.textContent=el.alt; if(d.showModal) d.showModal(); }
+    else if(el===d || el.id==='lbx'){ d.close(); }
+  });
+
+  /* Index highlight */
+  var links=[].slice.call(document.querySelectorAll('.index a'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ links.forEach(function(l){ l.classList.toggle('on', l.getAttribute('href')==='#'+en.target.id); }); } }); },{rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('.sheet').forEach(function(s){ io.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>
